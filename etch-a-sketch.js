@@ -1,18 +1,49 @@
 /* Author: Aldin Moreno */
 
 const container = document.querySelector(".container");
+const button = document.querySelector("#gridButton");
 
-for (let i = 1; i <= 16; i++) {
-   for (let j = 1; j <= 16; j++) {
-      const div = document.createElement("div");
-      div.setAttribute("class", "gridbox");
-      container.appendChild(div);
+function generateDiv(divCount) {
+   const gridCellSize = ((600 / divCount) - 2).toFixed(2);
+   let gridSize = Math.pow(divCount, 2);
+   console.log(gridCellSize);
+   console.log(gridSize);
+
+   // Create the div
+   while (gridSize > 0) {
+      const gridDiv = document.createElement("div");
+      container.appendChild(gridDiv);
+      gridDiv.setAttribute("class", "gridbox");
+      gridDiv.style.width = gridCellSize + "px";
+      gridDiv.style.height = gridCellSize + "px";
+      gridDiv.style.border = "1px solid #ebebeb";
+      gridSize--;
    }
+
+   const gridCells = document.querySelectorAll(".gridbox");
+   gridCells.forEach(cell => cell.addEventListener("mouseenter", changebgcolor));
 }
-const gridCells = document.querySelectorAll(".gridbox");
-gridCells.forEach(cell => cell.addEventListener("mouseenter", changebgcolor));
+
 
 
 function changebgcolor() {
    this.style.backgroundColor = "#5C40BC";
 }
+
+function clearGrid() {
+   const howManyGrid = prompt("Enter how many squares per side");
+   console.log(howManyGrid);
+
+   if (howManyGrid >= 1 && howManyGrid <= 100) {
+      while (container.hasChildNodes()) {
+         container.removeChild(container.lastChild);
+      }
+      generateDiv(howManyGrid);
+   } else {
+      alert("Choose a number between 1-100");
+      clearGrid();
+   }
+}
+
+button.addEventListener("click", clearGrid);
+generateDiv(16);
