@@ -86,10 +86,10 @@ function clearGrid(howManyGrid) {
          container.removeChild(container.lastChild);
       }
       generateDiv(howManyGrid);
-   } /* else {
-      //alert("Choose a number between 1-100");
-      //clearGrid();
-   } */
+   } else {
+      alert("Choose a number between 1-100");
+      clearGrid(getUserPrompt());
+   }
 }
 
 function getUserPrompt() {
