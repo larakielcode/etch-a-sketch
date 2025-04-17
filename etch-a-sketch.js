@@ -77,19 +77,32 @@ function changebgcolor() {
 
 }
 
-function clearGrid() {
-   const howManyGrid = prompt("Enter how many squares per side");
-   console.log(howManyGrid);
+function clearGrid(howManyGrid) {
+   /* const howManyGrid = prompt("Enter how many squares per side");
+   console.log(howManyGrid); */
 
    if (howManyGrid >= 1 && howManyGrid <= 100) {
       while (container.hasChildNodes()) {
          container.removeChild(container.lastChild);
       }
       generateDiv(howManyGrid);
-   } else {
-      alert("Choose a number between 1-100");
-      clearGrid();
-   }
+   } /* else {
+      //alert("Choose a number between 1-100");
+      //clearGrid();
+   } */
 }
-button.addEventListener("click", clearGrid);
+
+function getUserPrompt() {
+   const howManyGrid = prompt("Enter how many squares per side");
+   return howManyGrid;
+   //console.log(howManyGrid);
+}
+button.addEventListener("click", () => {
+   clearGrid(getUserPrompt());
+});
+
+resetButton.addEventListener("click", () => {
+   clearGrid(16);
+});
+
 generateDiv(16);
