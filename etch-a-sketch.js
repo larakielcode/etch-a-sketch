@@ -2,6 +2,7 @@
 
 const container = document.querySelector(".container");
 const button = document.querySelector("#gridButton");
+const cbutton = document.querySelector("#clearButton");
 
 function generateDiv(divCount) {
    const gridCellSize = ((600 / divCount) - 2).toFixed(2);
@@ -27,7 +28,14 @@ function generateDiv(divCount) {
    gridCells.forEach(cell => cell.addEventListener("mouseenter", changebgcolor));
 }
 
+cbutton.addEventListener("click", clearTiles);
 
+function clearTiles() {
+   const tiles = document.querySelectorAll(".gridbox");
+   tiles.forEach(cell => {
+      cell.style.backgroundColor = "white";
+   });
+}
 
 function changebgcolor() {
    this.style.backgroundColor = "#6A9FE6";
