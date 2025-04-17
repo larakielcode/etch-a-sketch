@@ -3,6 +3,10 @@
 const container = document.querySelector(".container");
 const button = document.querySelector("#gridButton");
 const cbutton = document.querySelector("#clearButton");
+const randButton = document.querySelector("#randomize");
+const resetButton = document.querySelector("#resetGrid");
+let bgcolor = "rgb(102,102,102)";
+let counter = 1;
 
 function generateDiv(divCount) {
    const gridCellSize = ((600 / divCount) - 2).toFixed(2);
@@ -18,16 +22,18 @@ function generateDiv(divCount) {
       gridDiv.style.width = gridCellSize + "px";
       gridDiv.style.height = gridCellSize + "px";
       gridDiv.style.border = "1px solid white";
-      //gridDiv.style.backgroundColor = "#59e47c";
       gridDiv.style.backgroundColor = "white";
       gridDiv.style.borderCollapse = "collapse";
       gridSize--;
    }
 
    const gridCells = document.querySelectorAll(".gridbox");
-   gridCells.forEach(cell => cell.addEventListener("mouseenter", changebgcolor));
+   gridCells.forEach(cell => cell.addEventListener("mouseover", changebgcolor));
 }
 
+resetButton.addEventListener("click", () => {
+
+});
 cbutton.addEventListener("click", clearTiles);
 
 function clearTiles() {
@@ -37,8 +43,38 @@ function clearTiles() {
    });
 }
 
+randButton.addEventListener("click", () => {
+   counter++;
+   console.log(counter);
+   checkActiveButton();
+   /* let r = Math.round((Math.random() * 255 - 1) + 1);
+   let g = Math.round((Math.random() * 255 - 1) + 1);
+   let b = Math.round((Math.random() * 255 - 1) + 1);
+   bgcolor = "rgb(" + r + "," + g + "," + b + ")"; */
+});
+
+function checkActiveButton() {
+   if (counter % 2 === 0) {
+      randButton.style.backgroundColor = "blue";
+   } else {
+      randButton.style.backgroundColor = "yellow";
+   }
+}
+
+function randomizeRGB() {
+   let r = Math.round((Math.random() * 255 - 1) + 1);
+   let g = Math.round((Math.random() * 255 - 1) + 1);
+   let b = Math.round((Math.random() * 255 - 1) + 1);
+   return "rgb(" + r + "," + g + "," + b + ")";
+}
+
 function changebgcolor() {
-   this.style.backgroundColor = "#6A9FE6";
+   if (counter % 2 === 0) {
+      this.style.backgroundColor = randomizeRGB();
+   } else {
+      this.style.backgroundColor = bgcolor;
+   }
+
 }
 
 function clearGrid() {
@@ -55,6 +91,5 @@ function clearGrid() {
       clearGrid();
    }
 }
-
 button.addEventListener("click", clearGrid);
 generateDiv(16);
