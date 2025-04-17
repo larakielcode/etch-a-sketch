@@ -31,7 +31,6 @@ function generateDiv(divCount) {
 
 function changebgcolor() {
    this.style.backgroundColor = "#6A9FE6";
-   this.style.backgroundColor = "#6ae689";
 }
 
 function clearGrid() {
