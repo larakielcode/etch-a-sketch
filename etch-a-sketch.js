@@ -28,12 +28,9 @@ function generateDiv(divCount) {
    }
 
    const gridCells = document.querySelectorAll(".gridbox");
-   gridCells.forEach(cell => cell.addEventListener("mouseover", changebgcolor));
+   gridCells.forEach(cell => cell.addEventListener("mouseenter", changebgcolor));
 }
 
-resetButton.addEventListener("click", () => {
-
-});
 cbutton.addEventListener("click", clearTiles);
 
 function clearTiles() {

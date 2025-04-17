@@ -23,9 +23,15 @@ header {
   gap: 5px;
 }
 
+header p {
+  padding: 0;
+  margin: 0;
+}
+
 .header-buttons {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  align-items: baseline;
 }
 
 h1 {
@@ -40,6 +46,7 @@ button {
   font-size: 15px;
   margin-right: 5px;
   background-color: yellow;
+  cursor: pointer;
 }
 
 .wrapper {
@@ -61,4 +68,10 @@ button {
   flex-flow: row wrap;
   box-sizing: content-box;
   z-index: 999;
+}
+
+.highlight strong {
+  font-size: 18px;
+  color: red;
+  text-shadow: -1px 1px 2px #1c6ea4;
 }
