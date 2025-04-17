@@ -16,7 +16,10 @@ function generateDiv(divCount) {
       gridDiv.setAttribute("class", "gridbox");
       gridDiv.style.width = gridCellSize + "px";
       gridDiv.style.height = gridCellSize + "px";
-      gridDiv.style.border = "1px solid #ebebeb";
+      gridDiv.style.border = "1px solid white";
+      //gridDiv.style.backgroundColor = "#59e47c";
+      gridDiv.style.backgroundColor = "white";
+      gridDiv.style.borderCollapse = "collapse";
       gridSize--;
    }
 
@@ -27,7 +30,8 @@ function generateDiv(divCount) {
 
 
 function changebgcolor() {
-   this.style.backgroundColor = "#5C40BC";
+   this.style.backgroundColor = "#6A9FE6";
+   this.style.backgroundColor = "#6ae689";
 }
 
 function clearGrid() {
